@@ -5,6 +5,7 @@ import { log } from 'node:console';
 import {
 	describe,
 	it,
+	test,
 } from 'node:test';
 
 assert.ok(1 === 1);
@@ -63,3 +64,16 @@ describe('message for description:', () => {
 // (will run it with the word "skipping" in the name argument)
 // to exclude describe or it method from running:
 // node --test-skip-pattern="skipping" --test
+
+describe('usage of the only', () => {
+	it('skipping something', async (t) => {
+		// t doesn't have it method, but have test
+		await t.test('subtest1', () => {
+			assert.ok(1 === 1);
+		});
+		// subtest is a way to test on logic with several steps or variants
+		await t.test('subtest2', () => {
+			assert.ok(0 == false);
+		});
+	});
+});
