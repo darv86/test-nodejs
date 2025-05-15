@@ -56,3 +56,10 @@ describe('message for description:', () => {
 // 	// todo method uses as a draft for testing
 // 	it.todo('something doing');
 // });
+
+// to run specific describe or it method,
+// use cli command flag with pattern (based on regex):
+// node --test-name-pattern="skipping" --test
+// (will run it with the word "skipping" in the name argument)
+// to exclude describe or it method from running:
+// node --test-skip-pattern="skipping" --test
