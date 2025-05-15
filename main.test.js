@@ -44,3 +44,15 @@ describe('message for description:', () => {
 		);
 	});
 });
+
+// only method works with cli command: node --test-only --test,
+// so other describe/suite methods will be ignored;
+// skip, todo, only works for describe and it
+// describe.only('usage of the only', () => {
+// 	// skip method uses to ignore current it group
+// 	it.skip('skipping something', () => {
+// 		assert.ok(0 === 1);
+// 	});
+// 	// todo method uses as a draft for testing
+// 	it.todo('something doing');
+// });
