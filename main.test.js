@@ -3,6 +3,10 @@ import { log } from 'node:console';
 // equal method acts, like strictEqual
 // import assert from 'node:assert/strict';
 import {
+	after,
+	afterEach,
+	before,
+	beforeEach,
 	describe,
 	it,
 	test,
@@ -75,5 +79,28 @@ describe('usage of the only', () => {
 		await t.test('subtest2', () => {
 			assert.ok(0 == false);
 		});
+	});
+});
+
+describe.only('before and after', () => {
+	before(() => {
+		log('runs cb before all tests');
+	});
+	beforeEach(() => {
+		// doesn't run for subtests
+		log('runs cb before each test');
+	});
+	after(() => {
+		log('runs cb after all tests');
+	});
+	afterEach(() => {
+		// doesn't run for subtests
+		log('runs cb before each test');
+	});
+	test('is it falsy', () => {
+		assert.ok(0 == false);
+	});
+	test('is it truth', () => {
+		assert.ok(1 == true);
 	});
 });
