@@ -145,3 +145,15 @@ suite('checking mocks', () => {
 
 // command runs test coverage for a project
 // node --test --experimental-test-coverage
+
+// provides different report styles:
+// default
+// node --test --test-reporter=spec
+// represents report, using dots and x
+// node --test --test-reporter=dot
+// another human readable format
+// node --test --test-reporter=tap
+// machine readable format
+// node --test --test-reporter=junit
+// can save report as a file
+// node --test --test-reporter-destination=test.info

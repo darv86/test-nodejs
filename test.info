@@ -1,0 +1,37 @@
+runs cb before all tests
+runs cb before each test
+runs cb before each test
+runs cb before each test
+runs cb before each test
+runs cb after all tests
+0 ------1-----
+1 ------2-----
+[ 'hey' ] ------3-----
+▶ message for description:
+  [32m✔ first ever [90m(0.732078ms)[39m[39m
+  [32m✔ second ever [90m(0.111537ms)[39m[39m
+  [32m✔ deep equal object [90m(0.613837ms)[39m[39m
+  [32m✔ strict deep equal object [90m(0.240255ms)[39m[39m
+[32m✔ message for description: [90m(2.642591ms)[39m[39m
+▶ usage of the only
+  ▶ skipping something
+    [32m✔ subtest1 [90m(0.208198ms)[39m[39m
+    [32m✔ subtest2 [90m(0.22035ms)[39m[39m
+  [32m✔ skipping something [90m(0.755336ms)[39m[39m
+[32m✔ usage of the only [90m(0.972542ms)[39m[39m
+▶ before and after
+  [32m✔ is it falsy [90m(0.504395ms)[39m[39m
+  [32m✔ is it truth [90m(0.382521ms)[39m[39m
+[32m✔ before and after [90m(2.060044ms)[39m[39m
+▶ checking mocks
+  [32m✔ mock works well [90m(1.932304ms)[39m[39m
+  [32m✔ try the context [90m(0.477366ms)[39m[39m
+[32m✔ checking mocks [90m(2.62087ms)[39m[39m
+[34mℹ tests 11[39m
+[34mℹ suites 4[39m
+[34mℹ pass 11[39m
+[34mℹ fail 0[39m
+[34mℹ cancelled 0[39m
+[34mℹ skipped 0[39m
+[34mℹ todo 0[39m
+[34mℹ duration_ms 78.342638[39m
