@@ -142,3 +142,6 @@ suite('checking mocks', () => {
 		log(calls[0].arguments, '------3-----');
 	});
 });
+
+// command runs test coverage for a project
+// node --test --experimental-test-coverage
