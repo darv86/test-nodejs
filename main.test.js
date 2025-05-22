@@ -1,3 +1,4 @@
+// @ts-nocheck
 import assert from 'node:assert';
 import { log } from 'node:console';
 // equal method acts, like strictEqual
@@ -7,9 +8,11 @@ import {
 	afterEach,
 	before,
 	beforeEach,
+	suite,
 	describe,
 	it,
 	test,
+	mock,
 } from 'node:test';
 
 assert.ok(1 === 1);
@@ -45,7 +48,7 @@ describe('message for description:', () => {
 		assert.deepStrictEqual(
 			{ name: 'Bob', age: 27 },
 			// { name: 'Bob', age: '27' },
-			{ name: 'Bob', age: 27 },
+			{ name: 'Bob', age: 27 }
 		);
 	});
 });
@@ -82,7 +85,7 @@ describe('usage of the only', () => {
 	});
 });
 
-describe.only('before and after', () => {
+describe('before and after', () => {
 	before(() => {
 		log('runs cb before all tests');
 	});
@@ -102,5 +105,40 @@ describe.only('before and after', () => {
 	});
 	test('is it truth', () => {
 		assert.ok(1 == true);
+	});
+});
+
+const person = {
+	name: 'Bob',
+	education: ['hight', 'middle'],
+	canSpeak(str) {
+		return [true, str];
+	},
+	doesErr() {
+		throw new TypeError();
+	},
+};
+suite('checking mocks', () => {
+	let calls;
+	test('mock works well', (t) => {
+		// checks if method (doesErr) throws an error with specific type (Error)
+		assert.throws(() => person.doesErr(), TypeError);
+		// mock object patch and spy the target (person)
+		// to see and store globally all changes of a method usage
+		mock.method(person, 'canSpeak');
+		// TestContext (t) does the same, but locally in the current test
+		// and has priority over mock object (overrides a patched data)
+		// t.mock.method(person, 'canSpeak');
+		calls = person.canSpeak.mock.calls;
+		log(calls.length, '------1-----');
+		person.canSpeak();
+		calls = person.canSpeak.mock.calls;
+		log(calls.length, '------2-----');
+	});
+	test('try the context', (t) => {
+		t.mock.method(person, 'canSpeak');
+		person.canSpeak('hey');
+		calls = person.canSpeak.mock.calls;
+		log(calls[0].arguments, '------3-----');
 	});
 });
